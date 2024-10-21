@@ -73,6 +73,10 @@ smooth.filt9 <- c(1, 2, 3, 4, 5, 4, 3, 2, 1)/25 #9
 smooth.filt <- smooth.filt11 <- c(1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1)/36 #11 
 smooth.filt13 <- c(1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1)/49 #13
 
+
+smooth.filt <- rep(1/11,11)
+smooth.filt <- c(11:1)/(sum(11:1))
+
 # differing definitions for thresholds - smoothed
 df_thresh$q75.sm <- head((stats::filter(c(df_thresh$q75,df_thresh$q75[(which(df_thresh$year==2024))[1:5]]), smooth.filt, circular=T)),-5)
 df_thresh$q50.sm <- head((stats::filter(c(df_thresh$q50,df_thresh$q50[(which(df_thresh$year==2024))[1:5]]), smooth.filt, circular=T)),-5)
